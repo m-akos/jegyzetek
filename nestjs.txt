@@ -1,0 +1,81 @@
+nestjs
+
+nest g module name [--dry-run]
+
+@Controller()
+
+dekorátor fv-ek
+@Get, @Post, @Put, @Delete
+
+@Body
+@Param
+
+@Entity() // class amit mapel egy db táblává
+class Post {
+  @PrimaryGeneratedColumn()
+  id
+  
+  @Column() v @Column({unique: true}) 
+  name;  
+
+}
+
+hozzáférés az entity-khez
+repository-k segítségével
+
+hozzáférés egy bizonyos repo-hoz (Post)
+@Module({
+  imports: [TypeOrmModule.forFeature([Post])],
+  ...
+})
+
+Repository használata (service)
+
+constructor(
+  @InjectRepository(Post)
+  private postsRepository: Repository<Post>
+}
+
+függvényei 
+hívás:
+postsRepository.find()
+
+find() : összes elem megkeresése
+findOne(id) : egy bizonyos id-hez tartozó elem
+
+create(dto) : új instance létrehozása
+save(obj): instance mentése, az adatbázisba 
+
+update(id, dto) : update (void?), hol lehet utánanézni
+delete(id)
+ const deleteResponse = delete(id); deleteResponse.affected : a törölt elemek száma
+
+
+
+
+
+
+
+Modulok
+
+ConfigModule.forRoot() @nestjs/config
+.env file-ból(app rootban) ovassa be a környezeti változókat (npm dotenvet használ)
+
+TypeOrmModule.forRootAsync(
+	import[ConfigModule],
+	inject[ConfigService],
+	useFactory: (configService: ConfigService) => ({
+		type: postgres,
+		host: configService.get('HOSTNAME'), // a hosthoz a HOSTNAME környezeti változó értékét rendeli
+		...
+		synchronize: true
+	})
+	)
+
+
+
+
+más npm 
+
+joi  The most powerful schema description language and data validator for JavaScript 
+

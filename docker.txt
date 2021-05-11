@@ -1,0 +1,51 @@
+docker
+
+files
+Dockerfile
+
+build docker image
+docker build -t img_name path
+
+run docker image
+docker run -dp 3000:3000 img_name 3000:3000 docker_port:host_port vagy fordítva
+
+docker container id listázás
+docker ps
+
+docker img-k listája
+docker image ls
+
+futó docker process leállítása
+docker stop container_id
+
+docker container eltávolítása
+docker rm container_id
+
+leállítja, és eltávolítja a containert
+docker rm -f container_id
+
+docker tag létrehozása
+docker tag local-image reponame
+docker tag local-image:tagname new-repo:tagname
+
+push a tag to a repo
+docker push new-repo:tagname
+
+parancs futtatása docker containerben
+docker exec
+
+named volumes
+
+docker volume létrehozása
+docker volume create 
+
+docker volume adatainak megtekintése
+docker volume inspect volume_name
+
+bind mounts
+docker run -dp 3000:3000 -w /dir_in_container -v host_dir:/dir_in_container image_name command_to_execute
+-w workdir beállítsa a container-ben, / az alapértelmezett
+-v host_dir bind mount-olja a conteneren belüli könyvtárhoz
+
+naplófile-ok megnézése
+docker logs -f

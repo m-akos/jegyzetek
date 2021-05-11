@@ -1,0 +1,6 @@
+npm
+ 
+list global packages
+npm list -g --depth 0
+
+npm install : installálja a szükséges npm csomagokat a package.json-ból a node_modules-ba

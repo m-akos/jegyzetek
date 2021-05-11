@@ -1,0 +1,91 @@
+Angular
+
+
+Cli 
+
+új project: 
+ng new project-name
+új component
+ng generate component 
+ vagy
+ng g c [--skip-tests]
+
+app indítása
+ng serve --open
+
+1.main.ts
+
+
+Lifecycle hooks
+
+@ngOnInit() : lifecycle hook
+@ngOnChanges(changes: SimpleChange) : mikor databind input property változik
+@ngDoCheck(): mikor az angular változásokra figyel
+
+
+Komponensek
+@Component({
+  selector: 
+  templateURl, 
+component:
+selector: 'selector'
+selector: 'attributeSelector'
+selector: `.classSelector`
+
+selecor: 
+  hivatkozás child komponensre a template-ben
+  minden ami az app selecor nyitó és záró tagja közt van el lesz távolítva a dom-ból
+  ha mégis szeretnénk rá hivatkozni, a child komponens-ben kell az <ng-content> direktívával megadni
+
+
+
+
+Data binding
+string interpolation: {}
+property binding: []
+event binding: (event)="action($event)"
+2 way data binding [(ngModel)]="var";
+
+
+@Input() és @Input('alias')
+property bindinggal hozzá lehet kapcsolni egy másik component változójához > bemenetet hoz lépre a szülő komponens, a bemenő komponents tartalmazó direktívájának property-jéhez
+
+@Output() : kimenő paraméter, Event emitterel, használva automatikusan érzékeli a változást az elem ami használja
+  
+@ViewChild('local_element') var_name: ElementRef; direkt referencia a dom-ban az elementhez
+  ElementRef type
+  elementRef.nativeElement -> az element, amire az elementref hivatkozik; elementRef.nativeElement.value ->  a hivatkozott elem értéke
+  inkább csak az értékek olvasására, nem pedig dom manipulációra; meg lehet oldani, de vannak jobb módszerek is
+
+Templates
+változó deklarálása
+
+local element
+  bármelyik elementhez hozzá lehet adni a template-ben, #-al kezdődik
+  az egész html-el element-re hivatkozik, nem csak a tartalmára
+  csak a template-ben használható, de csak a nevével a # nélkül, átadhatjuk függvényeknek
+
+Directives
+
+if
+*ngIf="feltétel"
+
+if-else
+
+<p *ngIf="feltétel; else other"></p>
+  lehetőség van index értékének megszerzésére *ngIf="feltétel; let i = index"
+<ng-template #other> ...
+<ng-content> : a selector tartalmát jeleníti meg a child element-ben ( alapból törli a dom-ból)
+
+[ngStyle]="{backgroundColor: getColor()}" style property-t állítja, feltételtől stb. függően
+[ngClass]="{className: ...}"  .className propertyt állítja feltételek alapján
+
+EventEmitter
+x = new EventEmitter(); v new EvetnEmitter<type>();
+
+x.emit(var);
+
+
+
+jegyzet, hogy lehet beállítani a bootstrapet
+

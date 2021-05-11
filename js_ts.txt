@@ -1,0 +1,20 @@
+függvények
+
+Math.random() : 0 és 1 közt generál véletlen számot
+
+Number(str) -> str number cast
+
+
+
+typescript 
+
+változók
+
+változónév lehet number, string stb.
+változónév? : opcionális változó
+
+export default
+  csak egy lehet egy modulban
+  importálásnál bármilyen néven lehet importálni, nem csak azon , amin deklarálva lett
+  
+  setInterval(() => {...}, number_in_millis );
